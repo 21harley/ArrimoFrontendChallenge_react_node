@@ -1,0 +1,41 @@
+estructura de carpetas 
+src/
+|-- components/
+|   |-- Avatar/
+|   |   |-- Avatar.jsx
+|   |   |-- Avatar.test.js
+|   |-- Button/
+|   |   |-- Button.jsx
+|   |   |-- Button.test.js
+|   |-- TextField/
+|   |   |-- TextField.jsx
+|   |   |-- TextField.test.js
+|-- contexts/
+|   |-- UserContext/
+|   |   |-- UserContext.js
+|-- hooks/
+|   |-- useMediaQuery/
+|   |   |-- useMediaQuery.js
+|-- pages/
+|   |-- Home/
+|   |   |-- components/
+|   |   |   |-- SomeUserProfileComponent/
+|   |   |   |   |-- SomeUserProfileComponent.jsx
+|   |   |   |   |-- SomeUserProfileComponent.test.js
+|   |   |-- utils/
+|   |   |-- services/
+|   |   |-- hooks/
+|   |   |-- contexts/
+|   |   |-- views/
+|   |   |   |-- HomeView.jsx
+|-- utils/
+|   |-- some-common-util/
+|   |   |-- index.js/
+|   |   |-- index.test.js
+|-- services/
+|   |-- some-common-service/
+|   |   |-- index.js/
+|   |   |-- some-common-service.js/
+|   |   |-- index.test.js
+|-- App.jsx
+|-- index.js
