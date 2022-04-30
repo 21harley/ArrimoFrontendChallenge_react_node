@@ -11,6 +11,7 @@ const initialState = {
     },
   ],
   n_users: 1,
+  n_id: 1,
 };
 
 export const userSlice = createSlice({
@@ -19,11 +20,23 @@ export const userSlice = createSlice({
   reducers: {
     setUser: (state, action) => {
       let { user, n_user } = action.payload;
-      if (n_user >= 0 && n_user <= state.data.length) state.data[n_user] = user;
+      for (let i = 0; i < state.data.length; i++) {
+        if (state.data[i].id == n_user) {
+          state.data[i] = user;
+          break;
+        }
+      }
     },
     addUser: (state, action) => {
-      state.data.push(action.payload.user);
+      let { name, password, email } = action.payload;
       state.n_users++;
+      state.n_id++;
+      state.data.push({
+        id: state.n_id,
+        name: name,
+        email: email,
+        password: password,
+      });
     },
     resertUser: (state, action) => {
       let { id_user } = action.payload;
@@ -33,24 +46,10 @@ export const userSlice = createSlice({
       state.data = new_data;
       state.n_users--;
     },
-    getUser: (state, action) => {
-      let { id_user } = action.payload;
-      for (let i = 0; i < state.data.length; i++) {
-        if (state.data[i].id === id_user) {
-          return {
-            id: state.data[i].id,
-            name: state.data[i].name,
-            password: state.data[i].password,
-            email: state.data[i].email,
-          };
-        }
-      }
-      return {};
-    },
   },
 });
 
-export const { setUser } = userSlice.actions;
+export const { setUser, addUser, resertUser } = userSlice.actions;
 
 export default userSlice.reducer;
 /*

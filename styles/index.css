@@ -30,6 +30,9 @@ body{
     margin: auto;
     max-width: 280px;
 }
+.container__view{
+   width: 100%;
+}
 .container--grid{
     display: grid;
     place-items: center;
@@ -49,14 +52,29 @@ body{
     flex-direction: column;
     gap: var(--space-gad);
 }
+.container__calendar{
+    width: 60%;
+    height: 80%;
+    margin: auto;
+}
 /*class text*/
 .tg-center{
   text-align: center;
 }
+.tg-start{
+    text-align:start;
+}
 .lp-m{
     letter-spacing: .1rem;
 }
-
+/*class display*/
+.d-inline{
+    display: l;
+}
+/*class wi*/
+.w_full{
+    width: 100%;
+}
 /*class height*/
 .h_Max{
   height: var(--height-max);
@@ -119,7 +137,12 @@ body{
 .button--color--one:hover{
     background-color: var(--color-four);
 }
-
+.button--form{
+    width: 250px;
+}
+.button--formEdit{
+    width: 120px;
+}
 /*class menu*/
 .menu{
  background-color: var(--color-two);
@@ -145,9 +168,11 @@ body{
     list-style: none;
     width: 100%;
     padding:0;
+    height: 210px;
 }
 
 .li__user{
+    margin-top: 10px;
     margin: none;
     width:250px;
     background-color: var(--color-two);
@@ -156,18 +181,36 @@ body{
     text-overflow: ellipsis;
     padding: 20px;
 }
+/*class marg */
+.m-auto{
+    margin: auto;
+}
+.classOver{
+    overflow-y: auto;
+}
 /*query*/
 @media (max-width: 840px) {
     .button--radius{
         font-size: 9px;
     }
 }
-
+.grid__user{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    place-items: center;
+  }
 @media (max-width: 570px) {
     .container--home{
         display: grid;
         grid-template-columns: 100%;
-        grid-template-rows: 80% 20%;
+        grid-template-rows: 85% 15%;
+        padding: 0 5px 0 5px;
+    }
+    .container{
+        overflow-y: auto;
+        height: 100%;
     }
     .ul{
         display: flex;
@@ -184,10 +227,29 @@ body{
     .container--home>.ul:nth-child(1) {
         grid-row: 2;
       }
-    .container--home>.container:nth-child(2) {
+    .container--home>.container__view:nth-child(2) {
         grid-row: 1;
     }
     .button--radius{
         font-size: 12px;
+    }
+    .container__view{
+      height: 80vh;
+    }
+    .grid__user{
+        display: block;
+        overflow-y: auto;
+    }
+    .classOver{
+        margin: auto;
+        width: 100%;
+    }
+    .li__user{
+        margin: auto;
+    }
+    .container__calendar{
+        width: 100%;
+        height: 80%;
+        margin: auto;
     }
 }
