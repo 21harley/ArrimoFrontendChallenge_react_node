@@ -1,20 +1,35 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-//import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser, setLogin } from "../../Reduxer/slices/User";
 
 export default function Register() {
-  const [userState, setUserState] = useState({});
+  const dispatch = useDispatch();
+  const { data } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, name, password } = e.target;
-    setUserState({
-      name: name,
-      password: password,
-      email: email,
-    });
-    console.log(userState);
-    navigate("/home");
+    let ban = true;
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].email == email.value) {
+        ban = false;
+      }
+    }
+    if (ban) {
+      dispatch(
+        addUser({
+          name: name.value,
+          email: email.value,
+          password: password.value,
+        })
+      );
+      dispatch(setLogin(true));
+      alert("Successful registration");
+      navigate("/home");
+    } else {
+      alert("Mail already registered");
+    }
   };
   return (
     <>

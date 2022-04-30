@@ -7,11 +7,11 @@ const initialState = {
       id: 1,
       name: "john",
       password: "1234",
-      email: "john.llanes@gmail.com",
+      email: "john@hotmail.com",
     },
   ],
-  n_users: 1,
   n_id: 1,
+  login: false,
 };
 
 export const userSlice = createSlice({
@@ -29,7 +29,6 @@ export const userSlice = createSlice({
     },
     addUser: (state, action) => {
       let { name, password, email } = action.payload;
-      state.n_users++;
       state.n_id++;
       state.data.push({
         id: state.n_id,
@@ -44,12 +43,14 @@ export const userSlice = createSlice({
         return id_user != el.id;
       });
       state.data = new_data;
-      state.n_users--;
+    },
+    setLogin: (state, action) => {
+      state.login = action.payload.state;
     },
   },
 });
 
-export const { setUser, addUser, resertUser } = userSlice.actions;
+export const { setUser, addUser, resertUser, setLogin } = userSlice.actions;
 
 export default userSlice.reducer;
 /*

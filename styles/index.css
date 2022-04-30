@@ -188,6 +188,27 @@ body{
 .classOver{
     overflow-y: auto;
 }
+/* form */
+.form_modal{
+    display: none;
+}
+.form_modal--active{
+    display: grid;
+    place-items: center;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.8);
+    z-index: 1000;
+}
+.body_form_modal{
+    width: 280px;
+    height: 300px;
+}
 /*query*/
 @media (max-width: 840px) {
     .button--radius{
@@ -251,5 +272,6 @@ body{
         width: 100%;
         height: 80%;
         margin: auto;
+        position: relative;
     }
 }

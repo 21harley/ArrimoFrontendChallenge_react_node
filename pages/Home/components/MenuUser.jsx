@@ -1,13 +1,16 @@
 import { useNavigate } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { setLogin } from "./../../../Reduxer/slices/User";
 // eslint-disable-next-line react/prop-types
 export default function MenuUser({ setContainer }) {
   const listMenu = ["Users", "Calendar", "Theme", "Close"];
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handelMenu = (e) => {
     let dato = e.target.innerHTML;
     switch (dato) {
       case "Close":
+        dispatch(setLogin(false));
         navigate("/login");
         break;
       case "Users":

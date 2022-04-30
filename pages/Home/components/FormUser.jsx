@@ -43,9 +43,9 @@ export default function FormUser() {
         })
       );
       clearForm();
-      alert("Creater user exit");
+      alert("Successful user creation");
     } else {
-      alert("Correo Existen");
+      alert("There is the mail");
     }
   };
   const editUser = (e) => {
@@ -73,7 +73,7 @@ export default function FormUser() {
         })
       );
     } else {
-      alert("Error existe email");
+      alert("I already registered that email");
     }
   };
   const editUserForm = (e) => {

@@ -1,19 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-//import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setLogin } from "./../../Reduxer/slices/User";
 
 export default function Login() {
-  const [userState, setUserState] = useState({});
+  const dispatch = useDispatch();
+  const { data } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = e.target;
-    setUserState({
-      name: email,
-      password: password,
-    });
-    console.log(userState);
-    navigate("/home");
+    let ban = false;
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].email === email.value) {
+        if (data[i].password == password.value) {
+          ban = true;
+          break;
+        }
+      }
+    }
+    if (ban) {
+      dispatch(setLogin({ state: true }));
+      navigate("/home");
+    } else {
+      alert("Email or password error");
+    }
   };
   return (
     <>
